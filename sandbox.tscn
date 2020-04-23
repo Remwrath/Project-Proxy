@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://robot.tscn" type="PackedScene" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 40, 40 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 80, 80 )
+
+[node name="sandbox" type="Node2D"]
+
+[node name="robot" parent="." instance=ExtResource( 1 )]
+position = Vector2( 215.775, 360.402 )
+myname = "robot1"
+
+[node name="robot2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 681.091, 382.563 )
+myname = "robot2"
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+mass = 10.2041
+gravity_scale = 0.0
+linear_damp = 10.0
+angular_damp = 10.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+position = Vector2( 193, 179 )
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="RigidBody2D"]
+polygon = PoolVector2Array( 153.106, 140.18, 232.139, 140.18, 232.738, 218.016, 153.705, 217.417 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 452.544, 267.094 )
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( -86.2895, -80.1853, 76.9996, -77.8526, 75.8333, 76.1057, -79.2914, 74.9394 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/UI"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "WASD = move
+E = switch robots"
+__meta__ = {
+"_edit_use_anchors_": false
+}
