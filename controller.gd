@@ -56,3 +56,7 @@ func _input(event):
 			robot.remove_child(camera)
 			robot = $"/root/sandbox/robot"
 			robot.add_child(camera)
+	if event.is_action_pressed("robo_combine"):
+		get_node("/root/sandbox/Interaction").combine(
+			get_node("/root/sandbox/Interaction/Stone"),
+			get_node("/root/sandbox/Interaction/Duck"));
